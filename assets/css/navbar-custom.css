@@ -1,0 +1,254 @@
+/* ===================================================
+   NAVBAR CUSTOM – KORATSETGO (CLEAN & PREMIUM)
+   =================================================== */
+
+/* ===== BASE HEADER ===== */
+.header-area {
+  background: #ffffff;
+  border-bottom: 2px solid #00bcd4;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+.header-area .container {
+  max-width: 1400px;
+}
+
+/* ===== MAIN NAV LAYOUT ===== */
+.header-area .main-nav {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  height: 86px;
+  padding: 0 40px;
+}
+
+/* ===== LOGO ===== */
+.header-area .main-nav .logo {
+  display: flex;
+  align-items: center;
+}
+
+.header-area .main-nav .logo img {
+  height: 80px;              /* คุมขนาดด้วย height */
+  width: auto;               /* รักษาสัดส่วน */
+  max-height: none !important; /* ปลดล็อก */
+  margin-top: 0;             /* ไม่ต้องดัน */
+}
+
+/* ===== DESKTOP MENU ===== */
+.header-area .main-nav .nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex-wrap: nowrap;               /* กันเมนูตกบรรทัด */
+}
+
+.header-area .main-nav .nav li a {
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #111;
+  padding: 8px 14px;
+  white-space: nowrap;
+  border-radius: 999px;
+  transition: all .25s ease;
+}
+
+/* hover effect */
+.header-area .main-nav .nav li a:hover {
+  color: #00bcd4;
+  background: rgba(0,188,212,0.08);
+}
+
+/* underline (desktop only) */
+.header-area .main-nav .nav li a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  width: 0%;
+  height: 2px;
+  background: #00bcd4;
+  transform: translateX(-50%);
+  transition: width .25s ease;
+}
+
+.header-area .main-nav .nav li a:hover::after {
+  width: 60%;
+}
+
+/* active */
+.header-area .main-nav .nav li a.active {
+  color: #00bcd4;
+  font-weight: 600;
+}
+
+/* logout (right side) */
+.header-area .main-nav .nav li:last-child a {
+  font-size: 14px;
+  opacity: .85;
+}
+
+/* ===== MENU TRIGGER (HIDDEN ON DESKTOP) ===== */
+.menu-trigger {
+  display: none;
+}
+
+/* ===================================================
+   MOBILE (≤ 991px)
+   =================================================== */
+@media (max-width: 991px) {
+
+  .header-area .main-nav {
+    grid-template-columns: auto auto;
+    height: 70px;
+    padding: 0 20px;
+  }
+
+  /* logo */
+  .header-area .main-nav .logo img {
+    height: 52px;
+  }
+
+  /* ===== MENU TRIGGER (☰) ===== */
+  .menu-trigger {
+    display: block;
+    cursor: pointer;
+    width: 32px;
+    height: 24px;
+    position: relative;
+    z-index: 1001;
+  }
+
+  .menu-trigger span,
+  .menu-trigger span::before,
+  .menu-trigger span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #111;   /* ✅ สีดำ */
+    transition: .3s;
+  }
+
+  .menu-trigger span {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .menu-trigger span::before {
+    top: -8px;
+  }
+
+  .menu-trigger span::after {
+    top: 8px;
+  }
+
+  /* active ☰ → ❌ */
+  .menu-trigger.active span {
+    background: transparent;
+  }
+
+  .menu-trigger.active span::before,
+  .menu-trigger.active span::after {
+    background: #111;   /* ✅ สีดำตอน active */
+  }
+
+  .menu-trigger.active span::before {
+    transform: rotate(45deg) translate(5px,5px);
+  }
+
+  .menu-trigger.active span::after {
+    transform: rotate(-45deg) translate(5px,-5px);
+  }
+
+  /* ===== MOBILE MENU ===== */
+  .header-area .main-nav .nav {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    flex-direction: column;
+    display: none;
+    border-top: 1px solid #eee;
+  }
+
+  .header-area .main-nav .nav.active {
+    display: flex;
+  }
+
+  .header-area .main-nav .nav li {
+    width: 100%;
+    border-bottom: 1px solid #eee;
+  }
+
+  .header-area .main-nav .nav li a {
+    width: 100%;
+    padding: 14px 0;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 0;
+  }
+
+  .header-area .main-nav .nav li a::after {
+    display: none;
+  }
+}
+/* ===================================================
+   FORCE NAVBAR WHITE (DISABLE TEMPLATE SCROLL COLOR)
+   =================================================== */
+.background-header {
+  background: #ffffff !important;
+  border-bottom: 2px solid #00bcd4;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+/* ===================================================
+   FORCE MENU TRIGGER BLACK (OVERRIDE TEMPLATE)
+   =================================================== */
+
+/* normal */
+.menu-trigger span,
+.menu-trigger span::before,
+.menu-trigger span::after {
+  background-color: #111 !important;
+}
+
+/* when scroll (background-header) */
+.background-header .menu-trigger span,
+.background-header .menu-trigger span::before,
+.background-header .menu-trigger span::after {
+  background-color: #111 !important;
+}
+
+/* active (X icon) */
+.menu-trigger.active span {
+  background-color: transparent !important;
+}
+
+.menu-trigger.active span::before,
+.menu-trigger.active span::after,
+.background-header .menu-trigger.active span::before,
+.background-header .menu-trigger.active span::after {
+  background-color: #111 !important;
+}
+
+body {
+  font-family: 'Poppins', 'Prompt', 'Sarabun', sans-serif;
+}
+/* FIX HEADER STICKY HEIGHT */
+.header-area.header-sticky {
+  min-height: 86px !important;
+  height: 86px !important;
+}
